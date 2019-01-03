@@ -48,6 +48,21 @@
                                 v-model="roomType"
                                 :class="{ 'd-none' : (!isPresentForDinner || isPresentForDinner.length < 9)}"
                                 ></v-select>
+                                <template v-if="roomType && roomType.toLowerCase() !== 'no'">
+                                    <span>Pay CHF<v-chip label>{{ (roomType === 'Double') ? '80' : '50' }}.-</v-chip> by:</span>
+                                    <v-radio-group v-model="payment" row>
+                                        <v-radio value="Twint" color="primary">
+                                            <div slot="label"><img height="50" src="/images/twint.png" alt="Twint" /></div>
+                                        </v-radio>
+                                        <v-radio value="PayPal" color="primary">
+                                            <div slot="label"><img height="50" src="/images/paypal.png" alt="PayPal" /></div>
+                                        </v-radio>
+                                        <v-radio value="Bank" color="primary">
+                                            <div slot="label">Bank Transfer</div>
+                                        </v-radio>
+                                    </v-radio-group>
+                                </template>
+
                                 <v-btn
                                 @click.stop="saveData()"
                                 :loading="isSaving"
@@ -60,9 +75,10 @@
                             </form>
                         </v-flex>
                         <v-flex xs12 sm9 md6 v-else class="RSVP_Content__Form">
-                            <img src="https://media.giphy.com/media/3ohc0WtpRhd0WKUmKA/giphy-downsized.gif" class="mb-4"/>
+                            <img v-if="isPresent" src="https://media.giphy.com/media/z2u1v6gk170vC/giphy.gif" class="mb-4 GIF"/>
+                            <img v-else src="https://media.giphy.com/media/3o6ZtrtmTObNwRB9AY/giphy-tumblr.gif" class="mb-4 GIF"/>
                             <p class="display-1 font--special">{{ thanks }}</p>
-                            <p v-if="isPresent">In case of questions, feel free to reach us at <v-chip><a href="mailto:reception@grandhotel.wedding">reception@grandhotel.wedding</a></v-chip></p>
+                            <p v-if="isPresent">In case of questions, ping us at <a href="mailto:reception@grandhotel.wedding">reception@grandhotel.wedding</a></p>
                         </v-flex>
                         <v-flex lg6 class="hidden-md-and-down text-xs-center">
                             <img src="/images/rsvp.png" class="d-block wobble-hor-bottom"/>
@@ -121,6 +137,7 @@ import axios from 'axios'
 export default {
     data: () => ({
         dialogInfo: false,
+        payment: null,
         name: null,
         email: null,
         isPresent: null,
@@ -164,6 +181,7 @@ export default {
             params.append('Presence Details', this.isPresentForDinner)
             params.append('Dietary Requirements', this.hasDietaryRequirements)
             params.append('Room', this.roomType)
+            params.append('Payment Method', this.payment)
             params.append('Email', this.email)
            
             axios.post(
@@ -217,6 +235,10 @@ h2 {
 }
 img {
     max-width: 100%;
-    margin: 0 auto
+    margin: 0 auto;
+
+    &.GIF {
+        width: 100%
+    }
 }
 </style>
