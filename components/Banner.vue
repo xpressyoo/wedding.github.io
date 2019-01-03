@@ -40,9 +40,9 @@
 
   &_Divider {
     background: url('/images/divider.svg') no-repeat center / contain;
-    width:100%;
     height: 120px;
-    margin-top: 5%
+    max-width: 90%;
+    margin: 5% auto 0
   }
 }
 

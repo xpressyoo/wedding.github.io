@@ -6,7 +6,7 @@
             <v-card class="RSVP_Content pa-3">
                 <v-container>
                     <v-layout row wrap align-top>
-                        <v-flex sm12 md9 lg6 v-if="!thanks">
+                        <v-flex sm12 md9 lg6 v-if="!thanks" class="RSVP_Content__Form">
                             <h2 class="d-block font--special display-3 font-weight-light text-xs-center">RSVP</h2>
                             <p class="font--special title mt-2 text-xs-center lh-15">Please kindly respond no later than March 1st, 2019.</p>
                             <form class="gform">
@@ -59,9 +59,55 @@
                                 </v-btn>
                             </form>
                         </v-flex>
-                        <v-flex xs12 sm9 md6 v-else>
-                           <p class="display-1 font--special">{{ thanks }}</p>
-                           <p v-if="isPresent">In case of questions, feel free to reach us at <v-chip><a href="mailto:reception@grandhotel.wedding">reception@grandhotel.wedding</a></v-chip></p>
+                        <v-flex xs12 sm9 md6 v-else class="RSVP_Content__Form">
+                            <img src="https://media.giphy.com/media/3ohc0WtpRhd0WKUmKA/giphy-downsized.gif" class="mb-4"/>
+                            <p class="display-1 font--special">{{ thanks }}</p>
+                            <p v-if="isPresent">In case of questions, feel free to reach us at <v-chip><a href="mailto:reception@grandhotel.wedding">reception@grandhotel.wedding</a></v-chip></p>
+                        </v-flex>
+                        <v-flex lg6 class="hidden-md-and-down text-xs-center">
+                            <img src="/images/rsvp.png" class="d-block wobble-hor-bottom"/>
+                            <v-dialog
+                            v-model="dialogInfo"
+                            width="500"
+                            >
+                                <v-btn
+                                class="RSVP_Info elevation-3"
+                                slot="activator"
+                                dark
+                                fab
+                                icon>
+                                    <v-icon large>info</v-icon>
+                                </v-btn>
+
+                            <v-card>
+                                <v-card-title
+                                class="headline grey lighten-4"
+                                primary-title
+                                >
+                                <v-icon left>info_outline</v-icon>
+                                Information
+                                </v-card-title>
+
+                                <v-card-text>
+                                <p>More details will be added to this website in the coming weeks. Ensure to check it on a regular basis to be kept up-to-date.</p>
+                                <p>Meanwhile, you can contact Angèle or Florian by sending an email to:</p>
+                                <p class="text-xs-center"><v-chip color="primary" dark large class="mlr-auto mt-0 subheading d-inline-block">reception@grandhotel.wedding</v-chip></p>
+                                </v-card-text>
+
+                                <v-divider></v-divider>
+
+                                <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn
+                                    color="primary"
+                                    flat
+                                    @click="dialogInfo = false"
+                                >
+                                    Close
+                                </v-btn>
+                                </v-card-actions>
+                            </v-card>
+                            </v-dialog>
                         </v-flex>
                     </v-layout>
                 </v-container>
@@ -74,6 +120,7 @@
 import axios from 'axios'
 export default {
     data: () => ({
+        dialogInfo: false,
         name: null,
         email: null,
         isPresent: null,
@@ -149,15 +196,27 @@ export default {
     margin-top: 25%;
     
     &_Content {
-        background: #f8f2ed
+        background: #f8f2ed;
+
+        &__Form {
+            max-width: 500px
+        }
     }
 
     &_Submit {
         margin-left: auto;
         margin-right: auto
     }
+
+    &_Info {
+        background: #36223e
+    }
 }
 h2 {
     width: 100%
+}
+img {
+    max-width: 100%;
+    margin: 0 auto
 }
 </style>

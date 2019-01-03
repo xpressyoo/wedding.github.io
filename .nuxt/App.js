@@ -15,7 +15,7 @@ let layouts = {
 let resolvedLayouts = {}
 
 export default {
-  head: {"titleTemplate":"Angèle & Florian are getting married!","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1.0"},{"hid":"description","name":"description","content":""},{"hid":"robots","name":"robots","content":"noodp,noydir"},{"property":"og:type","content":"website"},{"property":"og:site_name","content":"A Wedding at Chandolin"}],"htmlAttrs":{"lang":"en"},"link":[{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Poiret+One"},{"rel":"shortcut icon","href":"\u002Ffavicon.png"},{"rel":"stylesheet","type":"text\u002Fcss","href":"\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:300,400,500,700|Material+Icons"}],"style":[],"script":[]},
+  head: {"titleTemplate":"Angèle & Florian are getting married!","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1.0"},{"hid":"description","name":"description","content":"Our wedding will take place on the 8th of June 2019 at the Grand Hôtel of Chandolin, Switzerland."},{"hid":"robots","name":"robots","content":"noodp,noydir"},{"property":"og:type","content":"website"},{"property":"og:site_name","content":"A Wedding at Chandolin"}],"htmlAttrs":{"lang":"en"},"link":[{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Poiret+One"},{"rel":"shortcut icon","href":"\u002Ffavicon.png"},{"rel":"stylesheet","type":"text\u002Fcss","href":"\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:300,400,500,700|Material+Icons"}],"style":[],"script":[]},
   render(h, props) {
     const loadingEl = h('nuxt-loading', { ref: 'loading' })
     const layoutEl = h(this.layout || 'nuxt')

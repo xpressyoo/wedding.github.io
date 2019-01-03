@@ -58,6 +58,6 @@ export default {
 <style lang="scss" scoped>
 .Wrapper {
 	min-height: 100%;
-	background: url('/images/head.jpg') #333333 no-repeat center top / cover
+	background: url('/images/head.jpg') #333333 no-repeat center top / cover;
 }
 </style>

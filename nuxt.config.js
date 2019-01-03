@@ -54,7 +54,7 @@ module.exports = {
       {
         hid: 'description',
         name: 'description',
-        content: ''
+        content: 'Our wedding will take place on the 8th of June 2019 at the Grand Hôtel of Chandolin, Switzerland.'
       },
       {
         hid: 'robots',
