@@ -1,8 +1,7 @@
 module.exports = {
-//   css: [
-//     { src: '~/assets/scss/animations.scss', lang: 'scss' },
-//     { src: '~/assets/scss/utilities.scss', lang: 'scss' }
-//   ],
+  css: [
+     { src: '~/assets/scss/global.scss', lang: 'scss' }
+  ],
   generate: {
     minify: {
       collapseWhitespace: false
@@ -37,7 +36,7 @@ module.exports = {
   build: {
     loaders: [
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg|jpg|gif)$/,
+        test: /\.(png|woff|woff2|eot|ttf|svg|jpg|gif|mp3)$/,
         loader: 'url-loader',
         query: {
           limit: 10000, // 10KO
@@ -45,17 +44,17 @@ module.exports = {
         }
       }
     ],
-    vendor: ['vue-lazyload']
+    // vendor: ['vue-lazyload']
   },
   head: {
-    titleTemplate: '%s - Gmelius',
+    titleTemplate: 'Angèle & Florian are getting married!',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
       {
         hid: 'description',
         name: 'description',
-        content: 'Gmelius makes your Gmail inbox instantly smarter and safer with email tracking, scheduling, collaborative kanban boards, email notes, shared email templates, follow-ups, mail merge and more. Install for free!'
+        content: ''
       },
       {
         hid: 'robots',
@@ -69,7 +68,7 @@ module.exports = {
       },
       {
         property: 'og:site_name',
-        content: 'Gmelius'
+        content: 'A Wedding at Chandolin'
       }
     ],
     htmlAttrs: {
@@ -78,7 +77,7 @@ module.exports = {
     link: [
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Roboto+Slab:300'
+        href: 'https://fonts.googleapis.com/css?family=Poiret+One'
       },
       {
         rel: 'shortcut icon',
