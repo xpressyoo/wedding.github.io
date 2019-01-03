@@ -4,14 +4,15 @@
 			<banner />
 			<rsvp />
 			<wedding-details />
+			<spotify />
 			<v-btn
 				icon
 				fixed
 				bottom
+				right
 				color="pink"
 				dark
 				fab
-				class="mb-4 ml-4"
 				@click.native="toggleSound">
 					<v-icon>{{ volumeState }}</v-icon>
 				</v-btn>
@@ -27,12 +28,14 @@
 import Banner from '~/components/Banner.vue'
 import Rsvp from '~/components/RSVP.vue'
 import WeddingDetails from '~/components/Wedding.vue'
+import Spotify from '~/components/Footer.vue'
 
 export default {
 	components: {
 		Banner,
 		Rsvp,
-		WeddingDetails
+		WeddingDetails,
+		Spotify
   },
   data () {
     return { 

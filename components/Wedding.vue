@@ -25,12 +25,7 @@
                             <v-flex xs6 sm3 class="text-xs-center py-3">
                                 <img alt=""  src="/images/music.svg"/>
                                 <h4 class="grey--text">Party Time</h4>
-                                <h5 class="subheading">Till Dawn</h5>
-                            </v-flex>
-                            <v-flex xs12 justify-center>
-                                <v-btn ripple dark href="https://open.spotify.com/user/depreua0/playlist/0RCpzKzFqJuUcxYj4DVq7o?si=xNNat9TuT-u3oQaiqUjwnA" target="_blank" rel="noreferrer" large round class="Spotify">
-                                    collaborative playlist
-                                </v-btn>
+                                <v-btn small round depressed href="https://open.spotify.com/user/depreua0/playlist/0RCpzKzFqJuUcxYj4DVq7o?si=xNNat9TuT-u3oQaiqUjwnA" target="_blank" rel="noreferrer">pick your song</v-btn>
                             </v-flex>
                         </v-layout>
                     </v-card>
@@ -71,8 +66,6 @@
               </v-layout>
             </v-container>
           </v-card>     
-        </v-flex>
-        <v-flex sm12 md2 lg3>
         </v-flex>
     </v-layout>
 </template>

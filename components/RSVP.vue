@@ -49,13 +49,13 @@
                                 :class="{ 'd-none' : (!isPresentForDinner || isPresentForDinner.length < 9)}"
                                 ></v-select>
                                 <template v-if="roomType && roomType.toLowerCase() !== 'no'">
-                                    <span>Pay CHF<v-chip label>{{ (roomType === 'Double') ? '80' : '50' }}.-</v-chip> by:</span>
+                                    <span>We'll take care of the booking. You can pay CHF<v-chip label>{{ (roomType === 'Double') ? '80' : '50' }}.-</v-chip> by:</span>
                                     <v-radio-group v-model="payment" row>
                                         <v-radio value="Twint" color="primary" @change="dialogTwint = true">
-                                            <div slot="label"><img height="50" src="/images/twint.png" alt="Twint" /></div>
+                                            <div slot="label"><img width="75" src="/images/twint.png" alt="Twint" /></div>
                                         </v-radio>
                                         <v-radio value="PayPal" color="primary" @change="goToPayPal()">
-                                            <div slot="label"><img height="50" src="/images/paypal.png" alt="PayPal" /></div>
+                                            <div slot="label"><img width="75" src="/images/paypal.png" alt="PayPal" /></div>
                                         </v-radio>
                                         <v-radio value="Bank" color="primary" @change="goToGoogleDoc()">
                                             <div slot="label">Bank Transfer</div>
