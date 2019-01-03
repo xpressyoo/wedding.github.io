@@ -5,7 +5,7 @@
             
             <v-layout row wrap justify-end>
                 <v-flex sm12 md9 lg7>
-                    <v-card color="white" flat class="Wedding_Agenda">
+                    <v-card color="white" flat class="Wedding_Agenda mb-4">
                         <v-layout row wrap>
                             <v-flex xs6 sm3 class="text-xs-center py-3">
                                 <img alt="" src="/images/ring.svg"/>
@@ -27,6 +27,11 @@
                                 <h4 class="grey--text">Party Time</h4>
                                 <h5 class="subheading">Till Dawn</h5>
                             </v-flex>
+                            <v-flex xs12 justify-center>
+                                <v-btn ripple dark href="https://open.spotify.com/user/depreua0/playlist/0RCpzKzFqJuUcxYj4DVq7o?si=xNNat9TuT-u3oQaiqUjwnA" target="_blank" rel="noreferrer" large round class="Spotify">
+                                    collaborative playlist
+                                </v-btn>
+                            </v-flex>
                         </v-layout>
                     </v-card>
                 </v-flex>
@@ -34,7 +39,7 @@
             
             <v-container>                
               <v-layout row wrap align-top justify-space-between>
-                <h2 class="font--special display-2 pt-3">Wedding Details</h2>
+                <h2 class="font--special display-2 pt-3 mb-4">Wedding Details</h2>
                 <v-flex sm12 md4>
                     <h3 class="font--special headline my-3">Location</h3>
                     <p class="mr-2 pb-2 subheading font-weight-light">Our wedding will be held at the Grand Hôtel in Chandolin, Switzerland. Weather permitting, the ceremony and cocktail will take place outdoors. Situated at 2,000 meters of altitude, the house has a long history and counts famous  visitors like Winston Churchill, the German chancellor Konrad Adenauer, Ferdinand von Zeppelin or the painter Edouard Ravel.</p>
@@ -88,5 +93,12 @@
 }
 h2 {
     width: 100%
+}
+.Spotify {
+    background: url(https://cdn.freebiesupply.com/logos/large/2x/spotify-2-logo-black-and-white.png) no-repeat #1db954 8px / 32px !important;
+    margin: 0 auto -20px;
+    display: flex;
+    padding-left: 64px;
+    max-width: 260px;
 }
 </style>

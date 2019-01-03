@@ -5,7 +5,7 @@
         <v-flex sm12 md9 lg8>
             <v-card class="RSVP_Content pa-3">
                 <v-container>
-                    <v-layout row wrap align-top>
+                    <v-layout row wrap align-top justify-center>
                         <v-flex sm12 md9 lg6 v-if="!thanks" class="RSVP_Content__Form">
                             <h2 class="d-block font--special display-3 font-weight-light text-xs-center">RSVP</h2>
                             <p class="font--special title mt-2 text-xs-center lh-15">Please kindly respond no later than March 1st, 2019.</p>
@@ -51,13 +51,13 @@
                                 <template v-if="roomType && roomType.toLowerCase() !== 'no'">
                                     <span>Pay CHF<v-chip label>{{ (roomType === 'Double') ? '80' : '50' }}.-</v-chip> by:</span>
                                     <v-radio-group v-model="payment" row>
-                                        <v-radio value="Twint" color="primary">
+                                        <v-radio value="Twint" color="primary" @change="dialogTwint = true">
                                             <div slot="label"><img height="50" src="/images/twint.png" alt="Twint" /></div>
                                         </v-radio>
-                                        <v-radio value="PayPal" color="primary">
+                                        <v-radio value="PayPal" color="primary" @change="goToPayPal()">
                                             <div slot="label"><img height="50" src="/images/paypal.png" alt="PayPal" /></div>
                                         </v-radio>
-                                        <v-radio value="Bank" color="primary">
+                                        <v-radio value="Bank" color="primary" @change="goToGoogleDoc()">
                                             <div slot="label">Bank Transfer</div>
                                         </v-radio>
                                     </v-radio-group>
@@ -129,6 +129,31 @@
                 </v-container>
             </v-card>
         </v-flex>
+        <v-dialog
+        v-model="dialogTwint"
+        max-width="480"
+        lazy>
+            <v-card>
+                <v-card-title class="headline"><img height="72" src="/images/twint.png" alt="Twint" /></v-card-title>
+
+                <v-card-text>
+                    Please send your Twint payment to Angèle's or Florian's Swiss mobile phone number. In case you don't know these details, just enter your own phone number below and we'll send a payment request your way.
+                    <v-text-field prepend-icon="smartphone" label="Phone number" name="phone" v-model="phone"></v-text-field>
+                </v-card-text>
+
+                <v-card-actions>
+                <v-spacer></v-spacer>
+
+                <v-btn
+                    color="primary"
+                    flat="flat"
+                    @click="dialogTwint = false"
+                >
+                    Done
+                </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
     </v-layout>
 </template>
 
@@ -137,7 +162,10 @@ import axios from 'axios'
 export default {
     data: () => ({
         dialogInfo: false,
+        dialogTwint: false,
+        dialogBank: false,
         payment: null,
+        phone: null,
         name: null,
         email: null,
         isPresent: null,
@@ -172,6 +200,12 @@ export default {
         }]
     }),
     methods: {
+        goToPayPal () {
+            window.open('https://www.paypal.me/florianbersier')
+        },
+        goToGoogleDoc () {
+            window.open('https://docs.google.com/document/d/1Cts4cFz0Z6I9i2SCAomv2_AlRY6SgLkShIjoejvrHLo/edit?usp=sharing')
+        },
         saveData () {
             if (!this.name) return
             this.isSaving = true
@@ -183,6 +217,7 @@ export default {
             params.append('Room', this.roomType)
             params.append('Payment Method', this.payment)
             params.append('Email', this.email)
+            params.append('Phone', this.phone)
            
             axios.post(
                 'https://script.google.com/macros/s/AKfycby1r2DuWGBlIaue7rQz13I8MbMU2MGCX7U6q4NotQ/exec', 
