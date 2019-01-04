@@ -66,6 +66,7 @@
                                 <v-btn
                                 @click.stop="saveData()"
                                 :loading="isSaving"
+                                :disabled="(!name || name.trim().length < 2) || (isPresent === null) || (isPresent && isPresentForDinner === null)"
                                 class="mt-2 RSVP_Submit d-block"
                                 outline
                                 large
@@ -81,49 +82,15 @@
                             <p v-if="isPresent">In case of questions, ping us at <a href="mailto:reception@grandhotel.wedding">reception@grandhotel.wedding</a></p>
                         </v-flex>
                         <v-flex lg6 class="hidden-md-and-down text-xs-center">
-                            <img src="/images/rsvp.png" class="d-block wobble-hor-bottom"/>
-                            <v-dialog
-                            v-model="dialogInfo"
-                            width="500"
-                            >
-                                <v-btn
+                            <img src="/images/rsvp.png" class="d-block wobble-hor-bottom"  @click="dialogInfo = true"/>
+                            <v-btn
                                 class="RSVP_Info elevation-3"
-                                slot="activator"
+                                @click="dialogInfo = true"
                                 dark
                                 fab
                                 icon>
-                                    <v-icon large>info</v-icon>
-                                </v-btn>
-
-                            <v-card>
-                                <v-card-title
-                                class="headline grey lighten-4"
-                                primary-title
-                                >
-                                <v-icon left>info_outline</v-icon>
-                                Information
-                                </v-card-title>
-
-                                <v-card-text>
-                                <p>More details will be added to this website in the coming weeks. Ensure to check it on a regular basis to be kept up-to-date.</p>
-                                <p>Meanwhile, you can contact Angèle or Florian by sending an email to:</p>
-                                <p class="text-xs-center"><v-chip color="primary" dark large class="mlr-auto mt-0 subheading d-inline-block">reception@grandhotel.wedding</v-chip></p>
-                                </v-card-text>
-
-                                <v-divider></v-divider>
-
-                                <v-card-actions>
-                                <v-spacer></v-spacer>
-                                <v-btn
-                                    color="primary"
-                                    flat
-                                    @click="dialogInfo = false"
-                                >
-                                    Close
-                                </v-btn>
-                                </v-card-actions>
-                            </v-card>
-                            </v-dialog>
+                                <v-icon large>info</v-icon>
+                            </v-btn>
                         </v-flex>
                     </v-layout>
                 </v-container>
@@ -153,6 +120,39 @@
                 </v-btn>
                 </v-card-actions>
             </v-card>
+        </v-dialog>
+        <v-dialog
+        v-model="dialogInfo"
+        width="500"
+        >
+        <v-card>
+            <v-card-title
+            class="headline grey lighten-4"
+            primary-title
+            >
+            <v-icon left>info_outline</v-icon>
+            Information
+            </v-card-title>
+
+            <v-card-text>
+            <p>More details will be added to this website in the coming weeks. Ensure to check it on a regular basis to be kept up-to-date.</p>
+            <p>Meanwhile, you can contact Angèle or Florian by sending an email to:</p>
+            <p class="text-xs-center"><v-chip color="primary" dark large class="mlr-auto mt-0 subheading d-inline-block">reception@grandhotel.wedding</v-chip></p>
+            </v-card-text>
+
+            <v-divider></v-divider>
+
+            <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+                color="primary"
+                flat
+                @click="dialogInfo = false"
+            >
+                Close
+            </v-btn>
+            </v-card-actions>
+        </v-card>
         </v-dialog>
     </v-layout>
 </template>

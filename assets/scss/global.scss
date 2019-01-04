@@ -66,7 +66,8 @@
 .wobble-hor-bottom {
 	-webkit-animation: wobble-hor-bottom 3.8s both infinite;
             animation: wobble-hor-bottom 3.8s both infinite;
-            margin-top: -100px !important
+            margin-top: -100px !important;
+            cursor: pointer
 }
 
 .animate-1,
